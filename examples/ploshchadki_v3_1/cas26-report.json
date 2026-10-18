@@ -1,0 +1,112 @@
+{
+  "standard": "CAS-26",
+  "standard_version": "0.1",
+  "checker": "cas26_check.py 0.1.1",
+  "index": "Площадки для бесплатной публикации статей по странам мира · Free article-publishing platforms by country",
+  "index_version": "3.1",
+  "checked_on": "2026-10-18",
+  "integrity": {
+    "files": [
+      {
+        "name": "ploshchadki_v3_1.csv",
+        "bytes": 187301,
+        "sha256": "3ef81fe106d1d86ecd5c99102d562367d98ef09af1e7d41c63be0f887199c482"
+      }
+    ],
+    "errors": [],
+    "warnings": [],
+    "rows": 256,
+    "columns": 24
+  },
+  "coverage": {
+    "declared": 101,
+    "present": 101,
+    "empty_rows": 14
+  },
+  "sample": {
+    "size": 30,
+    "seed": 26,
+    "population": 242,
+    "confirmed": 20,
+    "failures": [
+      {
+        "id": "cis-009",
+        "url": "https://vk.ru/dev/Share",
+        "reasons": [
+          "https://vk.ru/dev/Share: TimeoutError"
+        ]
+      },
+      {
+        "id": "p2_mk_blogeraj",
+        "url": "https://summit2010.globalvoices.org/2010/05/macedonia-state-of-the-blogosphere/",
+        "reasons": [
+          "https://summit2010.globalvoices.org/2010/05/macedonia-state-of-the-blogosphere/: quote not found"
+        ]
+      },
+      {
+        "id": "glb-writeas",
+        "url": "https://write.as/pricing",
+        "reasons": [
+          "https://tiny.write.as/blog/re-opening-free-accounts: URLError"
+        ]
+      },
+      {
+        "id": "p2-018",
+        "url": "https://jus.com.br/artigos/82027/sites-e-revistas-para-publicacao-de-artigos-juridicos",
+        "reasons": [
+          "https://jus.com.br/artigos/82027/sites-e-revistas-para-publicacao-de-artigos-juridicos: quote not found"
+        ]
+      },
+      {
+        "id": "p2aa019",
+        "url": "https://lawsociety.ly/invitation-to-writers-researchers/",
+        "reasons": [
+          "https://lawsociety.ly/invitation-to-writers-researchers/: quote not found"
+        ]
+      },
+      {
+        "id": "p4-rs-krstarica-blog",
+        "url": "https://forum.krstarica.com/help/pravilnik-bloga/",
+        "reasons": [
+          "https://forum.krstarica.com/help/pravilnik-bloga/: HTTP 403"
+        ]
+      },
+      {
+        "id": "ea-014",
+        "url": "https://zenn.dev/katomi95/articles/cross-posting-note-qiita-zenn",
+        "reasons": [
+          "https://zenn.dev/katomi95/articles/cross-posting-note-qiita-zenn: quote not found"
+        ]
+      },
+      {
+        "id": "p3aa13",
+        "url": "https://somanystories.ug/?p=2719",
+        "reasons": [
+          "https://somanystories.ug/?p=2719: HTTP 500"
+        ]
+      },
+      {
+        "id": "p4-dz-elwatan",
+        "url": "https://elwatan.dz/contribution-algerie-le-pari-dun-tourisme-dexception/",
+        "reasons": [
+          "https://elwatan.dz/contribution-algerie-le-pari-dun-tourisme-dexception/: quote not found"
+        ]
+      },
+      {
+        "id": "p2-003",
+        "url": "https://ecosistemastartup.com/colabora-con-el-ecosistema-startup",
+        "reasons": [
+          "https://ecosistemastartup.com/colabora-con-el-ecosistema-startup: HTTP 403"
+        ]
+      }
+    ],
+    "ratio": 0.667
+  },
+  "freshness": {
+    "checked_at": "2026-10-17",
+    "valid_until": "2027-01-15",
+    "fresh": true
+  },
+  "result": "failed",
+  "main_sha256": "3ef81fe106d1d86ecd5c99102d562367d98ef09af1e7d41c63be0f887199c482"
+}

@@ -1,0 +1,426 @@
+{
+  "standard": "CAS-26",
+  "standard_version": "0.1",
+  "publisher": "Liora (Yulia Klinovaya) & Kas №26",
+  "title": "Площадки для бесплатной публикации статей по странам мира · Free article-publishing platforms by country",
+  "version": "3.1",
+  "built_at": "2026-10-17",
+  "files": [
+    {
+      "name": "ploshchadki_v3_1.csv",
+      "bytes": 187301,
+      "sha256": "3ef81fe106d1d86ecd5c99102d562367d98ef09af1e7d41c63be0f887199c482"
+    }
+  ],
+  "external_timestamp": "",
+  "question": "Где в каждой стране мира можно бесплатно опубликовать статью (в том числе написанную с ИИ), и на каких условиях · Where in each country one can publish an article for free, including AI-assisted, and on what terms",
+  "row_is": "одна площадка в одной стране (или GLOBAL / регион); строка type=none_found — страна, где искали и не нашли · one platform in one country (or GLOBAL / region); type=none_found rows record countries searched with nothing found",
+  "schema": [
+    {
+      "column": "id",
+      "meaning": "уникальный идентификатор строки · unique row id"
+    },
+    {
+      "column": "name",
+      "meaning": "название площадки · platform name"
+    },
+    {
+      "column": "url",
+      "meaning": "адрес площадки · platform URL"
+    },
+    {
+      "column": "country",
+      "meaning": "код страны ISO-2, GLOBAL или регион · ISO-2 country code, GLOBAL, or a region"
+    },
+    {
+      "column": "lang",
+      "meaning": "язык(и) площадки · platform language(s)"
+    },
+    {
+      "column": "type",
+      "meaning": "тип: news_portal_blogs, ugc_media, blog_platform, dev_community, social_longform, newsletter, qa_site; none_found — страна пуста · type; none_found marks an empty unit"
+    },
+    {
+      "column": "topics",
+      "meaning": "темы площадки; для none_found — перечень испробованных ходов · topics; for none_found — what was tried"
+    },
+    {
+      "column": "audience_size",
+      "meaning": "размер аудитории, как заявлен · audience size as stated"
+    },
+    {
+      "column": "audience_source",
+      "meaning": "откуда взят размер аудитории · source of the audience figure"
+    },
+    {
+      "column": "free_publish",
+      "meaning": "можно ли публиковать бесплатно · free publishing yes/no/conditions"
+    },
+    {
+      "column": "registration_requirements",
+      "meaning": "что нужно для регистрации · what registration requires"
+    },
+    {
+      "column": "ai_content_policy",
+      "meaning": "правила площадки про контент от ИИ · the platform's AI-content rule"
+    },
+    {
+      "column": "ban_risk_notes",
+      "meaning": "за что банят, по правилам · what gets you banned"
+    },
+    {
+      "column": "links_policy",
+      "meaning": "правила про ссылки · links policy"
+    },
+    {
+      "column": "posting_api_or_import",
+      "meaning": "есть ли API или импорт для публикации · posting API or import"
+    },
+    {
+      "column": "author_monetization",
+      "meaning": "платит ли площадка авторам · author monetization"
+    },
+    {
+      "column": "moderation",
+      "meaning": "как устроена модерация · moderation"
+    },
+    {
+      "column": "source_url",
+      "meaning": "адрес страницы правил или документа, откуда взяты сведения · source URL"
+    },
+    {
+      "column": "source_quote",
+      "meaning": "дословная цитата из источника, до 10 слов · verbatim quote, up to 10 words"
+    },
+    {
+      "column": "source_date",
+      "meaning": "дата источника; если источник без даты — дата просмотра · source date, or retrieval date if the source is undated"
+    },
+    {
+      "column": "search_lang",
+      "meaning": "язык(и) поиска · search language(s)"
+    },
+    {
+      "column": "n_queries",
+      "meaning": "число поисковых запросов на строку · number of search queries"
+    },
+    {
+      "column": "confidence",
+      "meaning": "high / medium / low — см. confidence_levels"
+    },
+    {
+      "column": "part",
+      "meaning": "проход сборки и отметка проверки Гемини/Каса · collection pass and Gemini/Kas check mark"
+    }
+  ],
+  "coverage": {
+    "unit": "country",
+    "column": "country",
+    "units": [
+      "AE",
+      "AL",
+      "AM",
+      "AR",
+      "AT",
+      "AU",
+      "BD",
+      "BE",
+      "BG",
+      "BR",
+      "BY",
+      "CA",
+      "CH",
+      "CI",
+      "CL",
+      "CM",
+      "CN",
+      "CO",
+      "CR",
+      "CU",
+      "CZ",
+      "DE",
+      "DK",
+      "DO",
+      "DZ",
+      "EC",
+      "EE",
+      "EG",
+      "ES",
+      "ET",
+      "FI",
+      "FR",
+      "GE",
+      "GH",
+      "GLOBAL",
+      "GR",
+      "HK",
+      "HR",
+      "HU",
+      "ID",
+      "IE",
+      "IL",
+      "IN",
+      "IQ",
+      "IR",
+      "IS",
+      "IT",
+      "JO",
+      "JP",
+      "KE",
+      "KR",
+      "KZ",
+      "KZ;KG;TJ;TM;UZ",
+      "LB",
+      "LK",
+      "LT",
+      "LU",
+      "LV",
+      "LY",
+      "MA",
+      "MENA (pan-Arab)",
+      "MK",
+      "MN",
+      "MX",
+      "MY",
+      "NG",
+      "NL",
+      "NO",
+      "NP",
+      "NZ",
+      "PE",
+      "PH",
+      "PK",
+      "PL",
+      "PT",
+      "QA",
+      "RO",
+      "RS",
+      "RU",
+      "RW",
+      "SA",
+      "SE",
+      "SG",
+      "SI",
+      "SK",
+      "SN",
+      "SY",
+      "TH",
+      "TN",
+      "TR",
+      "TW",
+      "TZ",
+      "UA",
+      "UG",
+      "UK",
+      "US",
+      "UZ",
+      "VE",
+      "VN",
+      "XK",
+      "ZA"
+    ],
+    "rows": 256,
+    "empty_units": 14,
+    "empty_marker": {
+      "column": "type",
+      "value": "none_found"
+    }
+  },
+  "method": "От стран и местных языков: сначала полный список стран, по каждой — поиск на её языке, английский запасной, потом сведение. Этап 1 — четыре агента по регионам (СНГ, Европа, Восточная Азия, остальной мир): 163 строки. Этап 2 — добор пробелов пятью агентами (СЗ Европа, Балканы+Балтия, арабский мир+Африка, Латам+англоязычные, Кавказ+Центральная Азия) со списком уже найденного: 256 строк, 78 стран. Этап 3 — 38 пустых стран, смена метода: рейтинги самых посещаемых сайтов страны → национальные порталы с разделами «пишите нам / колонка / мнение»; для бывшего СССР — поиск по-русски; местные айти-сообщества. Этап 4 — перепроверка Gemini пачками по 30 строк по собственным страницам правил площадок, сверка Касом скриптом (число строк, id, 24 колонки), выборочная перепроверка спорного; все девять пачек влиты с пометками в колонке part (gemini:проверено / gemini:изменено <поля> / gemini:не проверено); четыре площадки по пустым странам найдены самим Gemini (p4_gemini_check); Krstarica проверена Касом руками. Версия 3.1: колонка source_date приведена к ISO-дате; где источник без даты — дата просмотра 2026-10-16.",
+  "confidence_levels": {
+    "high": "открыта собственная страница правил площадки, цитата взята с неё · the platform's own rules page was opened and quoted",
+    "medium": "сведения с площадки или о площадке, но страница правил не открыта целиком · from the platform or about it, rules page not fully read",
+    "low": "по вторичным источникам или без подтверждения · secondary sources or unconfirmed"
+  },
+  "provenance_columns": {
+    "id": "id",
+    "source_url": "source_url",
+    "source_quote": "source_quote",
+    "source_date": "source_date",
+    "search_lang": "search_lang",
+    "confidence": "confidence",
+    "checked_by": "part"
+  },
+  "negative": [
+    {
+      "unit": "KW",
+      "id": "p3-kw-none",
+      "tried": [
+        "Angles tried: ar Al-Qabas 'آراء القراء/صوت القارئ'; ar 'منصة كويتية للتدوين'; en Kuwait Times/Arab Times submit opinion (only reader-letter items surfaced). Fallback: pan-Arab rows"
+      ],
+      "date": "2026-10-16"
+    },
+    {
+      "unit": "BA",
+      "id": "p3_ba_none",
+      "tried": [
+        "Angles tried: old platform (blogger.ba - no live search hit); news portal kolumna submission (Buka); liveness check blocked"
+      ],
+      "date": "2026-10-16"
+    },
+    {
+      "unit": "ME",
+      "id": "p3_me_none",
+      "tried": [
+        "Angles tried: national portal column submission (Vijesti.me kolumne / pošaljite tekst); no hits"
+      ],
+      "date": "2026-10-16"
+    },
+    {
+      "unit": "CY",
+      "id": "p3_cy_none",
+      "tried": [
+        "Angles tried: Cyprus Mail opinion submission (only 'cm our view' author page found); no Greek-Cypriot portal submission pages surfaced"
+      ],
+      "date": "2026-10-16"
+    },
+    {
+      "unit": "MD",
+      "id": "p3-md-none",
+      "tried": [
+        "Angles tried p3: ru Point.md блоги; ru Newsmaker.md мнения/колонка; ro agora.md/diez.md/unimedia Blogosfera opinie trimite articol; en moldova.org write-for-us/op-ed. Only author pages of logos-pres.md (staff) and Euromaidan Press op-ed form (UA outlet) surfaced"
+      ],
+      "date": "2026-10-16"
+    },
+    {
+      "unit": "AZ",
+      "id": "p3-az-none",
+      "tried": [
+        "Angles tried p3: az 'blog platforması məqalə yaz müəllif ol' (only global AI writer tools); ru 'Азербайджан авторские блоги / IT сообщество статьи' (the-tech.kz list of AZ communities: GDG Baku, Women in Tech AZ, Azerbaijan Startup Community, IGDA AZ, Friends of Figma Baku - social media only, no article sections); en OC Media op-ed (outlet blocked in AZ)"
+      ],
+      "date": "2026-10-16"
+    },
+    {
+      "unit": "UY",
+      "id": "p3-latam-004",
+      "tried": [
+        "Searched: 3rd pass es: 'escribe para nosotros/colaborá' tecnología Uruguay; Similarweb/ahrefs top sites UY (ahrefstop.com list blocked: permission not answered); Montevideo Portal columnistas (only staff/invited columnist category pages, no submission channel); la diaria / El Observador columnas 'extensión máxima' enviar; Uypress/Ecos/Caras y Caretas 'enviar a' - nothing open. Fallback: global platforms (Medium, Blogger, Substack, dev.to, LinkedIn articles)."
+      ],
+      "date": "2026-10-16"
+    },
+    {
+      "unit": "BO",
+      "id": "p3-latam-005",
+      "tried": [
+        "Searched: 3rd pass es: Brújula Digital/Opinión.com.bo/Página Siete (closed 2023) 'envíe su artículo'; eju.tv/Los Tiempos/El Deber 'columnistas invitados'; periodismo ciudadano Bolivia -> Fundación para el Periodismo red de diarios ciudadanos (El Ch'ukuta, 2012, no current URL, likely defunct). Fallback: global platforms (Medium, Blogger, Substack, dev.to, LinkedIn articles)."
+      ],
+      "date": "2026-10-16"
+    },
+    {
+      "unit": "PY",
+      "id": "p3-latam-006",
+      "tried": [
+        "Searched: 3rd pass es: 'envianos tu opinión/envía tu artículo' medio digital; ABC Color/Última Hora/La Nación PY cartas/columna; only Municipales Paraguay (2014 political magazine, no contributor info) surfaced. Fallback: global platforms (Medium, Blogger, Substack, dev.to, LinkedIn articles)."
+      ],
+      "date": "2026-10-16"
+    },
+    {
+      "unit": "GT",
+      "id": "p3-latam-007",
+      "tried": [
+        "Searched: 3rd pass es: 'envíe su columna/comparte tu opinión' Guatemala; Plaza Pública/República.gt/Soy502 colaboraciones; La Hora 'columna invitada'; Prensa Libre has nav category 'Plumas invitadas' (guest pens) but no submission process found - invitation-based, unverified; comunidad desarrolladores GT/CR/PA - nothing. Fallback: global platforms (Medium, Blogger, Substack, dev.to, LinkedIn articles)."
+      ],
+      "date": "2026-10-16"
+    },
+    {
+      "unit": "HN",
+      "id": "p3-latam-008",
+      "tried": [
+        "Searched: partial es: 'envíanos tu artículo de opinión / escribe para nosotros' Honduras/El Salvador - only spam mirror pages; Criterio.hn not reached by budget. Fallback: global platforms (Medium, Blogger, Substack, dev.to, LinkedIn articles)."
+      ],
+      "date": "2026-10-16"
+    },
+    {
+      "unit": "SV",
+      "id": "p3-latam-009",
+      "tried": [
+        "Searched: partial es: same HN/SV query; diario.elmundo.sv/llms.txt read - lists Opinión and IA sections, no submission or AI policy. Fallback: global platforms (Medium, Blogger, Substack, dev.to, LinkedIn articles)."
+      ],
+      "date": "2026-10-16"
+    },
+    {
+      "unit": "NI",
+      "id": "p3-latam-010",
+      "tried": [
+        "Searched: partial es: Confidencial/La Prensa NI/Artículo 66 'artículos de opinión envíe' - only press-freedom coverage (media in exile); La Prensa NI has historical 'Cartas al director'. Fallback: global platforms (Medium, Blogger, Substack, dev.to, LinkedIn articles)."
+      ],
+      "date": "2026-10-16"
+    },
+    {
+      "unit": "PA",
+      "id": "p3-latam-011",
+      "tried": [
+        "Searched: partial es: La Prensa/Metro Libre/Ensegundos/Panamá América 'artículos de opinión normas envío' - only individual opinion pieces, no rules page. Fallback: global platforms (Medium, Blogger, Substack, dev.to, LinkedIn articles)."
+      ],
+      "date": "2026-10-16"
+    }
+  ],
+  "conflicts": [
+    {
+      "id": "glb-writeas",
+      "a": "https://write.as/pricing",
+      "b": "https://tiny.write.as/blog/re-opening-free-accounts",
+      "note": "страница цен: бесплатный план «Closed for now»; пост блога (без даты): бесплатные аккаунты снова открыты · pricing says free tier closed; undated blog post says reopened"
+    }
+  ],
+  "dead": [
+    {
+      "id": "",
+      "closed_at": "2026-03-01",
+      "source": "blog.hr закрыт · closed"
+    },
+    {
+      "id": "",
+      "closed_at": "2024-03-24",
+      "source": "Taringa закрыта · closed"
+    },
+    {
+      "id": "",
+      "closed_at": "2026-06-30",
+      "source": "SAPO Blogs: публикация отключена 30.06.2026, удаление 30.11.2026 · publishing disabled, deletion 30.11.2026"
+    },
+    {
+      "id": "",
+      "closed_at": "",
+      "source": "Hype.ru, Horde.me, Premierwrite — мёртвые · dead"
+    }
+  ],
+  "checked_at": "2026-10-17",
+  "recheck_every_days": 90,
+  "changelog": [
+    {
+      "version": "1.0",
+      "date": "2026-10-16",
+      "what": "первый проход, 163 строки · first pass"
+    },
+    {
+      "version": "2.0",
+      "date": "2026-10-16",
+      "what": "добор пробелов, 256 строк, 78 стран · gap filling"
+    },
+    {
+      "version": "3.0",
+      "date": "2026-10-17",
+      "what": "38 пустых стран новым методом; перепроверка Gemini всех 256 строк пачками по 30; 115 единиц покрытия, 14 пустых · empty countries by new method; Gemini re-check of all rows"
+    },
+    {
+      "version": "3.1",
+      "date": "2026-10-18",
+      "what": "source_date приведена к ISO; без правки содержания · source_date normalized to ISO, content unchanged"
+    }
+  ],
+  "limits": [
+    "Не гарантирует, что площадка примет вашу статью · does not guarantee a platform will accept your article",
+    "Не гарантирует, что правила не изменились после даты проверки · rules may have changed after checked_at",
+    "8 строк Gemini не смог перепроверить (пометка gemini:не проверено в колонке part): p2-007, p2-008, p2-015, p2-016, p2-024, p2-028, p2-029, p2-uz-techvibe · 8 rows Gemini could not re-check",
+    "Размеры аудитории — как заявлены площадками или сторонними счётчиками, не проверены · audience sizes as stated, unverified"
+  ],
+  "license": "",
+  "price": "",
+  "where": {
+    "page": "https://github.com/klinovaya-yulia/cas-26",
+    "llms_txt": "",
+    "mcp": "",
+    "pay": ""
+  }
+}

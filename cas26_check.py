@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 CAS-26 reference checker · эталонный проверяльщик CAS-26
-Version 0.1
+Version 0.1.1
 
 Usage:
     python3 cas26_check.py <folder> [--sample 30] [--seed N] [--threshold 0.9]
@@ -30,7 +30,7 @@ import urllib.request
 
 STANDARD = "CAS-26"
 STANDARD_VERSION = "0.1"
-USER_AGENT = "CAS-26-checker/0.1 (+https://github.com/klinovaya-yulia/cas-26)"
+USER_AGENT = "CAS-26-checker/0.1.1 (+https://github.com/klinovaya-yulia/cas-26)"
 
 
 # ---------- helpers ----------
@@ -48,17 +48,24 @@ def parse_date(s):
     if not s:
         return None
     s = str(s).strip()
-    m = re.match(r"(\d{4})-(\d{2})-(\d{2})", s)  # ISO date or datetime prefix
+    m = re.search(r"(\d{4})-(\d{2})-(\d{2})", s)  # ISO date anywhere in the value
     if m:
         try:
             return dt.date(int(m.group(1)), int(m.group(2)), int(m.group(3)))
         except ValueError:
             return None
-    for fmt in ("%d.%m.%Y", "%Y-%m", "%Y"):
+    m = re.search(r"(\d{2})\.(\d{2})\.(\d{4})", s)  # DD.MM.YYYY
+    if m:
         try:
-            return dt.datetime.strptime(s, fmt).date()
+            return dt.date(int(m.group(3)), int(m.group(2)), int(m.group(1)))
         except ValueError:
-            continue
+            return None
+    m = re.fullmatch(r"(\d{4})(?:-(\d{2}))?", s)  # YYYY or YYYY-MM
+    if m:
+        try:
+            return dt.date(int(m.group(1)), int(m.group(2) or 1), 1)
+        except ValueError:
+            return None
     return None
 
 
@@ -199,17 +206,27 @@ def check_coverage(passport, fieldnames, rows, report):
     if not col or col not in fieldnames or not units:
         report["coverage"]["skipped"] = "no coverage column/units declared"
         return True
-    present = {r.get(col, "").strip() for r in rows}
+    filled = [r for r in rows if not is_empty_row(passport, r)]
+    present = {r.get(col, "").strip() for r in filled}
     missing = [u for u in units if u not in present]
     report["coverage"]["declared"] = len(units)
     report["coverage"]["present"] = len([u for u in units if u in present])
+    report["coverage"]["empty_rows"] = len(rows) - len(filled)
     if missing:
         report["coverage"]["missing"] = missing
     neg_units = [n.get("unit") for n in (passport.get("negative") or []) if n.get("unit")]
     leaked = [u for u in neg_units if u in present]
     if leaked:
-        report["coverage"]["warnings"] = ["units declared empty but present in index: %s" % ", ".join(leaked)]
+        report["coverage"]["warnings"] = ["units declared empty but present with data: %s" % ", ".join(leaked)]
     return not missing
+
+
+def is_empty_row(passport, row):
+    """A row that records 'nothing found' for a unit, as declared by coverage.empty_marker
+    ({"column": ..., "value": ...}). Such rows are negative knowledge, not sample candidates."""
+    marker = (passport.get("coverage") or {}).get("empty_marker") or {}
+    col, val = marker.get("column"), marker.get("value")
+    return bool(col) and row.get(col, "").strip() == str(val)
 
 
 def check_sample(passport, rows, args, report):
@@ -222,11 +239,13 @@ def check_sample(passport, rows, args, report):
 
     conflicts = {c.get("id"): c for c in (passport.get("conflicts") or []) if c.get("id")}
 
-    n = min(args.sample, len(rows))
+    candidates = [r for r in rows if not is_empty_row(passport, r)]
+    n = min(args.sample, len(candidates))
     rng = random.Random(args.seed)
-    sample = rng.sample(rows, n) if n < len(rows) else list(rows)
+    sample = rng.sample(candidates, n) if n < len(candidates) else list(candidates)
     report["sample"]["size"] = n
     report["sample"]["seed"] = args.seed
+    report["sample"]["population"] = len(candidates)
 
     confirmed = 0
     failures = []
@@ -318,7 +337,7 @@ def main():
     report = {
         "standard": STANDARD,
         "standard_version": STANDARD_VERSION,
-        "checker": "cas26_check.py 0.1",
+        "checker": "cas26_check.py 0.1.1",
         "index": passport.get("title"),
         "index_version": passport.get("version"),
         "checked_on": dt.date.today().isoformat(),

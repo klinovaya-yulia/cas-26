@@ -1,5 +1,7 @@
 # CAS-26
 
+Site: https://klinovaya-yulia.github.io/cas-26/ · llms.txt: https://klinovaya-yulia.github.io/cas-26/llms.txt
+
 **Стандарт паспорта и проверки индексов.**
 **A standard for index passports and verification.**
 

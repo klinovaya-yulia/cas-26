@@ -1,61 +1,61 @@
-# CAS-26 — стандарт паспорта и проверки индексов
+# CAS-26 — a standard for index passports and index verification
 
-Версия 0.1 · 18 октября 2026 · черновик, открыт для правок новыми версиями.
-English version: coming.
+Version 0.1 · 18 October 2026 · draft, open to change through new versions.
+Russian text: `SPEC.ru.md`. From this version on, the English text is the reference; the Russian one is a translation.
 
-## Зачем
+## Why
 
-Данные для агентов продаются на площадках, где покупатель не может отличить собранное от выдуманного, пока не заплатит. Сертификат на домен решил ту же задачу для сайтов: не «верьте нам», а «проверьте сами». CAS-26 делает то же для индексов. Он не оценивает, хороши ли данные. Он даёт способ проверить, что данные собраны так, как заявлено, и что это можно повторить.
+Data for agents is sold on marketplaces where the buyer cannot tell collected from invented until they have paid. A domain certificate solved the same problem for websites: not "trust us" but "check for yourself". CAS-26 does the same for indexes. It does not judge whether the data is good. It gives a way to check that the data was collected the way it claims, and that the check can be repeated.
 
-## Что такое индекс
+## What an index is
 
-Индекс — таблица, собранная под один вопрос, в которой у каждой строки есть происхождение: откуда взята, когда проверена, с какой уверенностью. Индекс отличается от датасета тремя вещами: он знает, чего в нём нет (отрицательное знание), он помнит, где источники спорят (противоречия), и у него есть дата, после которой ему нельзя верить без перепроверки (свежесть). Любой датасет может стать индексом, если получит паспорт.
+An index is a table built around one question, in which every row has provenance: where it was taken from, when it was checked, with what confidence. An index differs from a dataset in three things: it knows what it does not contain (negative knowledge), it remembers where sources disagree (conflicts), and it has a date after which it must not be trusted without re-checking (freshness). Any dataset can become an index by getting a passport.
 
-По-английски: index — a provenance-bearing dataset. Слово dataset допустимо как синоним для поиска.
+In one phrase: an index is a provenance-bearing dataset. The word "dataset" is acceptable as a synonym for search purposes.
 
-## Паспорт индекса
+## The index passport
 
-Паспорт — файл рядом с индексом, который читает машина. Имя файла: `passport.json`, в той же папке, что и индекс. Шаблон: `passport.template.json`. Поля:
+The passport is a machine-readable file next to the index. File name: `passport.json`, in the same folder as the index. Template: `passport.template.json`. Fields:
 
-**Кто и когда.** `publisher` — кто издал; `title` — название; `version` — номер версии; `built_at` — дата сборки; `files` — список файлов индекса, у каждого имя, размер в байтах и `sha256`; `external_timestamp` — адрес внешней метки времени (коммит, пост, запись в реестре), которую издатель не контролирует.
+**Who and when.** `publisher` — who published it; `title` — the name; `version` — version number; `built_at` — build date; `files` — the list of index files, each with name, size in bytes and `sha256`; `external_timestamp` — the address of an external timestamp (a commit, a post, a registry entry) that the publisher does not control.
 
-**Что внутри.** `question` — одной фразой, под какой вопрос собрано; `row_is` — что такое одна строка; `schema` — список колонок, у каждой имя и одна фраза значения; `coverage` — чем покрыто (для индексов по странам — список кодов стран), сколько строк, сколько единиц покрытия пустых.
+**What is inside.** `question` — in one phrase, the question the index was built for; `row_is` — what one row is; `schema` — the list of columns, each with a name and a one-phrase meaning; `coverage` — what is covered (for country indexes, the list of country codes), how many rows, how many coverage units are empty.
 
-**Как собрано.** `method` — метод словами: порядок поиска, языки, инструменты, этапы; `confidence_levels` — что означает каждый уровень уверенности в индексе, с условием присвоения высшего уровня.
+**How it was built.** `method` — the method in words: search order, languages, tools, stages; `confidence_levels` — what each confidence level in the index means, with the condition for granting the highest level.
 
-**Происхождение строки.** `provenance_columns` — какие колонки индекса несут происхождение: адрес источника, цитата, дата источника, язык поиска, уверенность, кто проверил. Паспорт объявляет имена колонок; сами значения живут в строках индекса. Цитата из источника — дословная, не длиннее десяти слов, чтобы её можно было найти на странице.
+**Row provenance.** `provenance_columns` — which index columns carry provenance: source address, quote, source date, search language, confidence, who checked. The passport declares the column names; the values themselves live in the index rows. The quote from the source is verbatim and no longer than ten words, so that it can be found on the page.
 
-**Отрицательное знание.** `negative` — единицы покрытия, где искали и не нашли, с перечнем предпринятых ходов. Запись «пусто» без перечня ходов не считается отрицательным знанием.
+**Negative knowledge.** `negative` — coverage units where a search was made and nothing was found, with the list of attempts made. An entry "empty" without a list of attempts does not count as negative knowledge.
 
-**Противоречия и мёртвые.** `conflicts` — строки, где два источника расходятся, с обоими адресами; `dead` — что закрылось, с датой закрытия и источником.
+**Conflicts and dead entries.** `conflicts` — rows where two sources disagree, with both addresses; `dead` — what has closed, with the closing date and the source.
 
-**Свежесть.** `checked_at` — дата последней проверки индекса целиком; `recheck_every_days` — объявленный интервал перепроверки; `changelog` — что изменилось между версиями, по одной строке на версию.
+**Freshness.** `checked_at` — the date the index was last checked as a whole; `recheck_every_days` — the declared re-check interval; `changelog` — what changed between versions, one line per version.
 
-**Чего не обещаем.** `limits` — словами, что паспорт не гарантирует. Для индекса площадок для публикаций это, например: что площадка примет вашу статью; что правила не изменились после даты проверки.
+**What we do not promise.** `limits` — in words, what the passport does not guarantee. For an index of publishing platforms this is, for example: that a platform will accept your article; that the rules have not changed since the check date.
 
-**Где взять.** `license`, `price`, `where` — адреса: страница, llms.txt, MCP, способ оплаты.
+**Where to get it.** `license`, `price`, `where` — addresses: page, llms.txt, MCP, payment method.
 
-Паспорт без любого из полей «кто и когда», «происхождение строки», «свежесть» и «чего не обещаем» — не паспорт. Остальные поля могут быть пустыми, но должны присутствовать и быть пустыми явно.
+A passport missing any of the fields under "who and when", "row provenance", "freshness" or "what we do not promise" is not a passport. The other fields may be empty, but must be present and explicitly empty.
 
-## Процедура проверки
+## The verification procedure
 
-Проверку может провести любой — издатель, покупатель, третья сторона, агент. Процедура одна и та же, и в этом смысл: отметка не требует доверия к проверяющему, её можно повторить. Эталонная реализация: `cas26_check.py`.
+Anyone can run the check — the publisher, a buyer, a third party, an agent. The procedure is the same for all, and that is the point: a mark does not require trusting the verifier, because it can be repeated. Reference implementation: `cas26_check.py`.
 
-**Целостность.** Файлы индекса существуют, их размер и sha256 совпадают с паспортом. Число строк и колонок совпадает с заявленным. Идентификаторы строк уникальны. Колонки происхождения, объявленные в паспорте, присутствуют.
+**Integrity.** The index files exist; their size and sha256 match the passport. The number of rows and columns matches what is declared. Row identifiers are unique. The provenance columns declared in the passport are present.
 
-**Покрытие.** Единицы покрытия из паспорта присутствуют в индексе; единицы из отрицательного знания в индексе отсутствуют или помечены как пустые.
+**Coverage.** The coverage units from the passport are present in the index; the units listed as negative knowledge are absent from the index or marked as empty.
 
-**Выборка.** Проверяющий выбирает случайные строки — не меньше тридцати или все, если строк меньше. Случайность фиксируется: в отчёт записывается seed, чтобы выборку можно было повторить. Для каждой строки: адрес источника открывается; на странице находится цитата; дата источника не позже даты проверки. Строка считается подтверждённой, если выполнены все три условия. Строка с пометкой «противоречие» подтверждается, если открываются оба адреса.
+**Sample.** The verifier picks random rows — no fewer than thirty, or all rows if there are fewer. The randomness is fixed: the seed is written to the report so the sample can be reproduced. For each row: the source address is opened; the quote is found on the page; the source date is not later than the check date. A row counts as confirmed when all three conditions hold. A row marked as a conflict is confirmed if both addresses open.
 
-**Порог.** Индекс проходит, если подтверждено не меньше девяти строк из каждых десяти в выборке. Неподтверждённые строки перечисляются в отчёте поимённо, с причиной: адрес не открылся, цитата не найдена, дата не сходится.
+**Threshold.** The index passes if at least nine rows out of every ten in the sample are confirmed. Unconfirmed rows are listed in the report by name, with the reason: address did not open, quote not found, date does not match.
 
-**Свежесть.** Если с `checked_at` прошло больше, чем `recheck_every_days`, индекс не проходит, какой бы ни была выборка.
+**Freshness.** If more than `recheck_every_days` have passed since `checked_at`, the index fails regardless of the sample.
 
-Отчёт проверки — файл `cas26-report.json`: дата, seed, размер выборки, число подтверждённых, список неподтверждённых с причинами, итог. Отчёт открыт.
+The check report is the file `cas26-report.json`: date, seed, sample size, number confirmed, the list of unconfirmed rows with reasons, the verdict. The report is public.
 
-## Отметка
+## The mark
 
-Отметка — свидетельство о пройденной проверке. Файл `cas26.json` рядом с паспортом:
+The mark is the record of a passed check. The file `cas26.json` next to the passport:
 
 ```json
 {
@@ -63,31 +63,31 @@ English version: coming.
   "standard_version": "0.1",
   "index": "<title>",
   "index_version": "<version>",
-  "sha256": "<хеш основного файла индекса>",
+  "sha256": "<hash of the main index file>",
   "verified_at": "2026-10-18",
-  "verifier": "<имя или адрес>",
+  "verifier": "<name or address>",
   "sample": 30,
   "confirmed": 29,
-  "report": "<адрес cas26-report.json>",
+  "report": "<address of cas26-report.json>",
   "valid_until": "<verified_at + recheck_every_days>",
-  "signature": "<подпись>"
+  "signature": "<signature>"
 }
 ```
 
-Отметка относится к конкретному хешу. Новая версия индекса — новая отметка. Отметка истекает в `valid_until`.
+A mark refers to a specific hash. A new version of the index means a new mark. A mark expires at `valid_until`.
 
-**Подпись.** Проверяющий подписывает отметку ключом, который можно проверить публично, не доверяя проверяющему на слово. Первый поддерживаемый способ — подпись сообщения кошельком в сети Base: проверяющий указан своим адресом, подписывается каноническая строка отметки без поля `signature`, подпись проверяется любым инструментом, умеющим проверять подписи Ethereum. Другие способы подписи допустимы, если указан способ проверки.
+**Signature.** The verifier signs the mark with a key that can be checked publicly, without taking the verifier's word for it. The first supported method is a message signature by a wallet on the Base network: the verifier is identified by its address, the canonical mark string without the `signature` field is signed, and the signature can be checked by any tool that verifies Ethereum signatures. Other signature methods are allowed if the verification method is stated.
 
-Отметка издателя (проверил сам себя) и отметка третьей стороны выглядят одинаково; разница только в поле `verifier`. Покупатель решает сам, чьей отметке верить, — и может не верить никому, а прогнать процедуру сам.
+A publisher's mark (self-check) and a third party's mark look the same; the only difference is the `verifier` field. The buyer decides whose mark to trust — and may trust no one and run the procedure themselves.
 
-## Что CAS-26 не делает
+## What CAS-26 does not do
 
-Не оценивает качество, полноту или полезность данных. Не гарантирует, что источники правдивы, — только что они существуют и говорят то, что в индексе процитировано. Не подменяет лицензию и не разрешает использование.
+It does not assess the quality, completeness or usefulness of the data. It does not guarantee that the sources are truthful — only that they exist and say what the index quotes. It does not replace a license and does not grant permission to use.
 
-## Как присоединиться
+## How to join
 
-Положить паспорт рядом с индексом. Прогнать процедуру — своей программой или эталонной. Положить отчёт и отметку. Указать в описании лота на площадке: «CAS-26: проверен <дата>, <адрес отметки>». Стандарт открыт, без платы и регистрации. Первые проверенные индексы — издателя стандарта, по тем же правилам, что и для всех.
+Put a passport next to your index. Run the procedure — with your own program or the reference one. Put the report and the mark next to it. State in the listing on the marketplace: "CAS-26: checked <date>, <address of the mark>". The standard is open, without fees or registration. The first checked indexes are the standard publisher's own, under the same rules as for everyone else.
 
-## Версии стандарта
+## Versions of the standard
 
-0.1 — первая публикация, 18 октября 2026. Изменения — через новые версии с журналом; опубликованные версии не правятся задним числом. Отметки старых версий остаются действительными до своего `valid_until`.
+0.1 — first publication, 18 October 2026. Changes come through new versions with a changelog; published versions are not edited retroactively. Marks issued under older versions remain valid until their `valid_until`.

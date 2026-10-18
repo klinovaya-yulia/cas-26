@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CAS-26 — index verification</title>
+<meta name="description" content="CAS-26 is an open standard for checking indexes (provenance-bearing datasets): a passport next to the data, a repeatable sample check against the sources, a signed mark.">
+<link rel="alternate" type="text/plain" href="llms.txt">
+<style>
+:root{--bg:#fbfaf7;--fg:#1b1a17;--mut:#6b675f;--line:#e4e0d6;--acc:#1f5f3a;--code:#f0ede5}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#15140f;--fg:#ebe7dc;--mut:#a39d90;--line:#2d2b24;--acc:#7cc89a;--code:#201f18}}
+:root[data-theme="dark"]{--bg:#15140f;--fg:#ebe7dc;--mut:#a39d90;--line:#2d2b24;--acc:#7cc89a;--code:#201f18}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.55 Georgia,"Times New Roman",serif}
+main{max-width:720px;margin:0 auto;padding:48px 16px 72px}
+h1{font-size:40px;line-height:1.1;margin:0 0 6px;letter-spacing:-.01em}
+.sub{color:var(--mut);margin:0 0 36px;font-size:18px}
+h2{font-size:21px;margin:40px 0 10px}
+p{margin:0 0 14px}
+a{color:var(--acc)}
+code,pre{font:14px/1.5 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:var(--code);border-radius:4px}
+code{padding:1px 5px}
+pre{padding:12px 14px;overflow-x:auto;margin:0 0 14px}
+table{border-collapse:collapse;width:100%;margin:0 0 14px;font-size:15px}
+td,th{text-align:left;padding:7px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--mut);font-weight:normal}
+.ru{border-top:1px solid var(--line);margin-top:48px;padding-top:24px}
+.small{color:var(--mut);font-size:14px}
+ol,ul{padding-left:22px;margin:0 0 14px}
+li{margin-bottom:6px}
+</style>
+</head>
+<body>
+<main>
+<h1>CAS-26</h1>
+<p class="sub">An open standard for checking whether a table of data can be trusted — not "trust us", but "check for yourself".</p>
+
+<h2>What it is</h2>
+<p>Data for agents is sold in marketplaces where the buyer cannot tell collected from invented until they have paid. A domain certificate solved the same problem for websites. CAS-26 does it for <em>indexes</em> — provenance-bearing datasets, tables where every row says where it came from, when it was checked, and with what confidence.</p>
+<p>CAS-26 does not judge whether data is good. It gives a way to check that the data was collected the way it claims, and that anyone can repeat the check.</p>
+
+<h2>How it works</h2>
+<ol>
+<li><strong>Passport.</strong> A machine-readable file next to the index: who built it and when, what one row is, how it was collected, which columns carry provenance, what was searched and not found, what the publisher does not promise.</li>
+<li><strong>Check.</strong> A program verifies the file hashes and coverage, draws a seeded random sample, opens every source address and looks for the quoted text, and checks that the index is not past its re-check date. Nine rows in ten must confirm.</li>
+<li><strong>Mark.</strong> A short line — index, version, hash, date, score — signed with a key anyone can verify. Marks go into an open registry. A new version of the index needs a new mark.</li>
+</ol>
+
+<h2>Where it stands</h2>
+<table>
+<tr><th>Standard</th><td>version 0.1, published 18 October 2026 · <a href="https://github.com/klinovaya-yulia/cas-26/blob/main/SPEC.md">SPEC.md</a> (English, reference) · <a href="https://github.com/klinovaya-yulia/cas-26/blob/main/SPEC.ru.md">по-русски</a> · <a href="https://github.com/klinovaya-yulia/cas-26/blob/main/CHANGES.md">what 0.2 changes</a></td></tr>
+<tr><th>First check</th><td>the publisher's own index of article-publishing platforms (256 rows, 101 countries) <strong>failed</strong>: 20 of 30 sampled rows confirmed. <a href="https://github.com/klinovaya-yulia/cas-26/tree/main/examples/ploshchadki_v3_1">Report</a>. The standard was first used to reject its authors' work — that is the point of it.</td></tr>
+<tr><th>Pre-checks</th><td>three well-known catalogs without passports, 30 random rows each: <a href="https://github.com/klinovaya-yulia/cas-26/tree/main/examples/precheck">public-apis 28/30 reachable · university-domains-list 17/30 · awesome-public-datasets 29/30</a>. None has provenance beyond a URL.</td></tr>
+<tr><th>Tools</th><td><a href="https://github.com/klinovaya-yulia/cas-26/blob/main/cas26_check.py">cas26_check.py</a> (reference checker, Python 3, no dependencies) · <a href="https://github.com/klinovaya-yulia/cas-26/blob/main/cas26_precheck.py">cas26_precheck.py</a> (for catalogs without a passport) · <a href="https://github.com/klinovaya-yulia/cas-26/blob/main/cas26_mcp.py">MCP server</a></td></tr>
+<tr><th>MCP endpoint</th><td><code>http://46.101.190.170:8026/mcp</code> (streamable HTTP) — tools: <code>spec</code>, <code>check_index</code>, <code>lookup_mark</code>, <code>verify_mark</code></td></tr>
+<tr><th>Registry</th><td><a href="https://github.com/klinovaya-yulia/cas-26/blob/main/registry.json">registry.json</a> — empty until the first index passes</td></tr>
+<tr><th>Verifier key</th><td>Base smart wallet <code>0x27edd411cd21c8dc5443f136da08a60f4a22f854</code>; signatures verified through ERC-1271</td></tr>
+</table>
+
+<h2>Try it</h2>
+<pre>git clone https://github.com/klinovaya-yulia/cas-26
+python3 cas-26/cas26_check.py &lt;folder with passport.json and your index&gt; --seed 26</pre>
+<p>Put a passport next to your index (template: <a href="https://github.com/klinovaya-yulia/cas-26/blob/main/passport.template.json">passport.template.json</a>), run the check, publish the report. No fee, no registration. Questions and findings: <a href="https://github.com/klinovaya-yulia/cas-26/issues">issues</a>.</p>
+
+<p class="small">Published by Yulia Klinovaya, Vanadzor. The number is the publisher's own; the name is not an acronym.</p>
+
+<section class="ru">
+<h2>Что такое CAS-26</h2>
+<p>Открытый стандарт проверки таблиц данных: не «верьте нам», а «проверьте сами». К индексу прикладывается паспорт — что внутри, откуда взято, когда смотрели. Проверяльщик сверяет отпечатки файлов, берёт случайные строки, сам идёт по их адресам и ищет обещанную цитату; девять строк из десяти должны подтвердиться. Пройденная проверка — отметка, подписанная ключом, который любой может проверить без нас, и запись в открытом реестре.</p>
+<p>Первый прогон стандарт сделал по индексу собственных авторов — и не пропустил его: 20 строк из 30. Это и есть доказательство, что проверка настоящая. Текст стандарта, проверяльщик, отчёты и MCP-сервер — в <a href="https://github.com/klinovaya-yulia/cas-26">репозитории</a>.</p>
+</section>
+</main>
+</body>
+</html>

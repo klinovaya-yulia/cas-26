@@ -1,0 +1,9 @@
+# CAS-26
+> Open standard for checking indexes (provenance-bearing datasets): passport next to the data, repeatable seeded sample check against the sources, signed mark in an open registry. Version 0.1, 2026-10-18.
+- Standard: https://github.com/klinovaya-yulia/cas-26/blob/main/SPEC.md
+- Passport template: https://github.com/klinovaya-yulia/cas-26/blob/main/passport.template.json
+- Reference checker: https://github.com/klinovaya-yulia/cas-26/blob/main/cas26_check.py
+- Registry of marks: https://raw.githubusercontent.com/klinovaya-yulia/cas-26/main/registry.json
+- MCP server (streamable HTTP): http://46.101.190.170:8026/mcp — tools spec, check_index, lookup_mark, verify_mark
+- Examples and reports: https://github.com/klinovaya-yulia/cas-26/tree/main/examples
+- Verifier key: Base smart wallet 0x27edd411cd21c8dc5443f136da08a60f4a22f854 (ERC-1271)

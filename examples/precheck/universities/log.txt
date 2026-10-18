@@ -1,0 +1,33 @@
+ 1/30 NO        UnicodeError Institut Supérieur d'Agriculture Rhone http://www.isara.fr/
+ 2/30 ok  name+ 200          Université d'Avignon                   http://www.univ-avignon.fr/
+ 3/30 NO        URLError     Centro de Estudios Avanzados de Puerto http://www.ceaprc.org/
+ 4/30 ok  name+ 200          Arkansas at Pine Bluff, University of  http://www.uapb.edu/
+ 5/30 ok  name+ 200          Los Medanos College                    http://www.losmedanos.edu/
+ 6/30 ok  name+ 200          St. Joseph's College (ME)              http://www.sjcme.edu/
+ 7/30 ok  name+ 200          Royal University of Law and Economics  http://www.rule.edu.kh/
+ 8/30 ok  name+ 200          Omdurman Ahlia University              http://www.oau.edu.sd/
+ 9/30 ok  name+ 200          Mount Saint Joseph College             http://www.msj.edu/
+10/30 NO        URLError     P. V. Narasimha Rao Telangana Veterina https://tsvu.nic.in/
+11/30 ok  name+ 200          Tarsus University                      http://www.tarsus.edu.tr/
+12/30 NO        URLError     Université de Mbuji Mayi               http://um-rdc.org/
+13/30 NO        URLError     Instituto Politecnico do Porto         http://www.ipp.pt/
+14/30 ok  name- 200          Dr. Babasaheb Ambedkar Technological U http://www.dbatechuni.org/
+15/30 ok  name+ 200          Universidad Comunera                   http://www.ucom.edu.py/
+16/30 NO        URLError     Institut National Polytechnique de Tou http://www.inp-fc.fr/
+17/30 ok  name+ 200          Georgian Court University              http://www.georgian.edu/
+18/30 ok  name+ 200          Pädagogische Hochschule Schwäbisch Gmü http://www.ph-gmuend.de/
+19/30 NO        URLError     Capital University of Medical Sciences http://www.cpums.edu.cn/
+20/30 NO        URLError     British Columbia Open University       http://www.bcou.ca/
+21/30 NO        RemoteDisconnected Fachhochschule für das öffentliche Bib http://www.fhoebb.de/
+22/30 ok  name+ 200          Great Basin College                    https://www.gbcnv.edu/
+23/30 ok  name+ 200          Université de Neuchâtel                http://www.unine.ch/
+24/30 NO        URLError     Universidad de las Américas (ULAM)     http://www.ulam.edu.ni/
+25/30 NO        URLError     Shahputra College                      http://www.kolejshahputra.edu.my/
+26/30 NO        URLError     Guru Jambeshwar University             http://www.gju.ernet.in/
+27/30 ok  name+ 200          Lamar State College-Port Arthur        http://www.lamarpa.edu/
+28/30 NO        403          Haverford College in Pennsylvania      http://www.haverford.edu/
+29/30 ok  name+ 200          Harding University                     http://www.harding.edu/
+30/30 ok  name+ 200          University of Ferrara                  http://www.unife.it/
+
+university-domains-list (Hipo, GitHub): rows 10268 · sample 30 (seed 26) · reachable 17/30 · name found 16/30 · unreachable {'UnicodeError': 1, 'URLError': 10, 'RemoteDisconnected': 1, 'HTTP 403': 1}
+report: universities/cas26-precheck.json

@@ -1,0 +1,33 @@
+ 1/30 ok  name- 200          Global Administrative Areas Database ( https://gadm.org/
+ 2/30 ok  name+ 200          placedb Location Data                  https://github.com/mindstellar/location-data
+ 3/30 ok  name- 200          72 hours #gamergate Twitter Scrape     http://waxy.org/random/misc/gamergate_tweets.csv
+ 4/30 ok  name- 200          UFL sparse matrix collection           http://www.cise.ufl.edu/research/sparse/matrices/
+ 5/30 ok  name+ 200          SupPrice-Index                         https://doi.org/10.5281/zenodo.22017250
+ 6/30 ok  name+ 200          humans.top — Influential People Rankin https://huggingface.co/datasets/dsfox/humans-top
+ 7/30 ok  name+ 200          German Climate Data Center             https://cdc.dwd.de/portal/
+ 8/30 ok  name+ 200          Bike Share Systems (BSS) collection    https://github.com/BetaNYC/Bike-Share-Data-Best-Practices/wi
+ 9/30 ok  name+ 200          TableJourney Food Festival Calendar    https://github.com/lewismvaughan/tablejourney-food-festivals
+10/30 ok  name+ 200          National Technical Reports Library     https://ntrl.ntis.gov/NTRL/
+11/30 NO        403          Greece Public Procurement (Diavgis)    https://diavgis.gr
+12/30 ok  name- 200          PRAD-CA-Prostate-Adenocarcinoma-Canada https://dcc.icgc.org/projects/PRAD-CA
+13/30 ok  name+ 200          GeoFabrik                              https://download.geofabrik.de/
+14/30 ok  name+ 200          Stowers Institute Original Data Reposi https://www.stowers.org/stowers-odr
+15/30 ok  name- 200          Brazil                                 https://dados.gov.br/dados/conjuntos-dados
+16/30 ok  name+ 200          Curatorial Pay Archive — advertised sa https://github.com/nsamman/curatorsearch-salary-archive
+17/30 ok  name+ 200          The Atlas of Economic Complexity       http://atlas.cid.harvard.edu
+18/30 ok  name- 200          Argentina (non official)               http://datos.gob.ar
+19/30 ok  name+ 200          pricing-models — per-unit API pricing  https://github.com/UNAUTH-ACCESS/pricing-models
+20/30 ok  name+ 200          Stanford Question Answering Dataset (S https://rajpurkar.github.io/SQuAD-explorer/
+21/30 ok  name+ 200          MovieLens Data Sets                    http://grouplens.org/datasets/movielens/
+22/30 ok  name+ 200          Guardian world governments             http://www.guardian.co.uk/world-government-data
+23/30 ok  name+ 200          UCSC Public Data                       http://hgdownload.soe.ucsc.edu/downloads.html
+24/30 ok  name+ 200          The Personal Genome Project            http://www.personalgenomes.org/
+25/30 ok  name+ 200          U.S. Federal Government Data Catalog   http://catalog.data.gov/dataset
+26/30 ok  name+ 200          Shortlist Price Index                  https://github.com/ies86/shortlist-price-index
+27/30 ok  name+ 200          OFAC SDN Vessels                       https://arcnautical.com/data/ofac-sdn-vessel-ownership-resol
+28/30 ok  name+ 200          NOAA Bering Sea Climate                http://www.beringclimate.noaa.gov/
+29/30 ok  name+ 200          World Cuisine Ingredient Overlap       https://www.kaggle.com/datasets/alperacax/world-cuisine-ingr
+30/30 ok  name+ 200          Measured World                         https://measuredworld.com
+
+awesome-public-datasets (GitHub): rows 1074 · sample 30 (seed 26) · reachable 29/30 · name found 23/30 · unreachable {'HTTP 403': 1}
+report: awesome/cas26-precheck.json

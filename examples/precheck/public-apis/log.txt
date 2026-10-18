@@ -1,0 +1,33 @@
+ 1/30 ok  name+ 200          NORTH7 Agent                           https://north7.ai/v1/docs
+ 2/30 ok  name+ 200          Real Time Finance                      https://github.com/Real-time-finance/finance-websocket-API/
+ 3/30 ok  name+ 200          FastSocial Instagram Data              https://fastsocial.co/instagram-api/docs
+ 4/30 ok  name+ 200          Public Holidays                        https://www.abstractapi.com/holidays-api
+ 5/30 ok        200          MY IP                                  https://www.myip.com/api-docs/
+ 6/30 ok  name- 200          airportsapi                            https://airport-web.appspot.com/api/docs/
+ 7/30 ok  name+ 200          Urantia Papers                         https://urantia.dev
+ 8/30 ok  name+ 200          Rebrandly                              https://developers.rebrandly.com/v1/docs
+ 9/30 ok  name+ 200          mail.tm                                https://docs.mail.tm
+10/30 ok  name+ 200          4chan                                  https://github.com/4chan/4chan-API
+11/30 ok  name+ 200          Sudoku100                              https://www.sudoku100.com/api
+12/30 ok  name+ 200          Botd                                   https://github.com/fingerprintjs/botd
+13/30 ok  name+ 200          Mono                                   https://mono.co/
+14/30 ok  name+ 200          Smithsonian Open Access                https://github.com/Smithsonian/smithsonian-openaccess
+15/30 NO        URLError     Bugsnax                                https://www.bugsnaxapi.com/
+16/30 ok  name+ 200          Sonar                                  https://github.com/Cgboal/SonarSearch
+17/30 ok  name+ 200          npm Registry                           https://github.com/npm/registry/blob/master/docs/REGISTRY-AP
+18/30 NO        URLError     PunkAPI                                https://punkapi.com/
+19/30 ok  name+ 200          GTFS Scorecard                         https://github.com/ChelseaKR/gtfs-scorecard/blob/main/docs/a
+20/30 ok  name+ 200          Pexafy                                 https://docs.pexafy.com
+21/30 ok  name+ 200          PayCrunch                              https://paycrunch.co/api.html
+22/30 ok  name+ 200          SuperHeroes                            https://superheroapi.com
+23/30 ok  name+ 200          MojoAuth                               https://mojoauth.com
+24/30 ok  name- 200          GetOTP                                 https://otp.dev/en/docs/
+25/30 ok  name- 200          Open Government, Lithuania             https://data.gov.lt/public/api/1
+26/30 ok  name+ 200          Kroki                                  https://kroki.io
+27/30 ok  name+ 200          BulkTranscripts                        https://bulktranscripts.co/docs
+28/30 ok  name+ 200          EuroValidate                           https://eurovalidate.com
+29/30 ok  name+ 200          Axolotl                                https://theaxolotlapi.netlify.app/
+30/30 ok  name+ 200          NovaFortix Dev                         https://public-dev-apis.surge.sh
+
+public-apis (GitHub): rows 2185 · sample 30 (seed 26) · reachable 28/30 · name found 24/30 · unreachable {'URLError': 2}
+report: public-apis/cas26-precheck.json

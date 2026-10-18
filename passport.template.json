@@ -1,0 +1,78 @@
+{
+  "standard": "CAS-26",
+  "standard_version": "0.1",
+
+  "publisher": "кто издал · who published",
+  "title": "название индекса · index title",
+  "version": "1.0",
+  "built_at": "2026-10-18",
+  "files": [
+    {"name": "index.csv", "bytes": 0, "sha256": ""}
+  ],
+  "external_timestamp": "адрес внешней метки времени (коммит, пост) · URL of an external timestamp the publisher does not control",
+
+  "question": "под какой вопрос собрано, одной фразой · the one question this index answers",
+  "row_is": "что такое одна строка · what one row is",
+  "schema": [
+    {"column": "id", "meaning": "уникальный идентификатор строки · unique row id"},
+    {"column": "source_url", "meaning": "адрес источника · source URL"},
+    {"column": "source_quote", "meaning": "дословная цитата из источника, до 10 слов · verbatim quote from the source, up to 10 words"},
+    {"column": "source_date", "meaning": "дата источника или его просмотра · date of the source or of its retrieval"},
+    {"column": "search_lang", "meaning": "язык, на котором искали · language of the search"},
+    {"column": "confidence", "meaning": "уровень уверенности · confidence level"},
+    {"column": "checked_by", "meaning": "кто проверил строку · who checked the row"}
+  ],
+  "coverage": {
+    "unit": "country",
+    "column": "country",
+    "units": [],
+    "rows": 0,
+    "empty_units": 0
+  },
+
+  "method": "метод словами: порядок поиска, языки, инструменты, этапы · the method in words: search order, languages, tools, stages",
+  "confidence_levels": {
+    "high": "условие присвоения · condition for this level",
+    "medium": "",
+    "low": ""
+  },
+
+  "provenance_columns": {
+    "id": "id",
+    "source_url": "source_url",
+    "source_quote": "source_quote",
+    "source_date": "source_date",
+    "search_lang": "search_lang",
+    "confidence": "confidence",
+    "checked_by": "checked_by"
+  },
+
+  "negative": [
+    {"unit": "", "tried": ["перечень ходов · what was tried"], "date": ""}
+  ],
+  "conflicts": [
+    {"id": "", "a": "", "b": "", "note": ""}
+  ],
+  "dead": [
+    {"id": "", "closed_at": "", "source": ""}
+  ],
+
+  "checked_at": "2026-10-18",
+  "recheck_every_days": 90,
+  "changelog": [
+    {"version": "1.0", "date": "2026-10-18", "what": "первая публикация · first publication"}
+  ],
+
+  "limits": [
+    "чего паспорт не гарантирует · what the passport does not guarantee"
+  ],
+
+  "license": "",
+  "price": "",
+  "where": {
+    "page": "",
+    "llms_txt": "",
+    "mcp": "",
+    "pay": ""
+  }
+}

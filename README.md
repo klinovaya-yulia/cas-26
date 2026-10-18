@@ -9,7 +9,7 @@ An index is a provenance-bearing dataset: a table built around one question, whe
 
 ## Что здесь · What is here
 
-- `SPEC.md` — текст стандарта · the standard (coming)
+- `SPEC.md` — текст стандарта, версия 0.1 · the standard, v0.1 (Russian; English coming)
 - `passport.template.json` — шаблон паспорта индекса · index passport template
 - `cas26_check.py` — эталонный проверяльщик · reference checker (Python 3, no dependencies)
 - `examples/` — первые проверенные индексы · first verified indexes (coming)
